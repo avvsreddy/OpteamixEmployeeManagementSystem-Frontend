@@ -1,0 +1,84 @@
+.dashboard-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Employee Card */
+.employee-card:hover {
+  background-color: #14386e;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* Project Card */
+.project-card:hover {
+  background-color:  #14386e;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* Task Card */
+.task-card:hover {
+  background-color:  #14386e;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* Active (Clicked) Card */
+.active-card {
+    background-color:  #14386e;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+  border: 3px solid #121415;
+}
+
+/* Badge Styling */
+.badge {
+  width: fit-content;
+  padding: 10px 15px;
+}
+.dashboard-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Different hover colors */
+.employee-card:hover {
+  background-color: #e7f1ff;
+}
+
+.project-card:hover {
+  background-color: #e7f1ff;
+}
+
+.task-card:hover {
+  background-color: #e7f1ff;
+}
+
+/* Active card */
+.active-card {
+  border: 2px solid #0b0d0f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Professional badge */
+.report-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
