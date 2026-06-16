@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
 
   <div class="card shadow">
 
@@ -48,6 +48,204 @@
       <button
         type="button"
         class="btn btn-success"
+        (click)="saveEmployee()">
+
+        Save Employee
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div> --> 
+<!-- code1 -->
+
+
+
+
+
+<div class="container mt-4">
+
+  <div class="card shadow">
+
+    <div class="card-header">
+
+      <h3>Add Employee</h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <!-- Global Error -->
+
+      <div
+        *ngIf="formSubmitted && !isFormValid()"
+        class="alert alert-danger">
+
+        Mandatory fields are not filled correctly.
+
+      </div>
+
+      <!-- Employee Code -->
+
+      <input
+        class="form-control mb-1"
+        placeholder="Employee Code"
+        [(ngModel)]="employee.employeeCode"
+        [class.is-invalid]="formSubmitted && !employee.employeeCode">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="formSubmitted && !employee.employeeCode">
+
+        Employee Code is required
+
+      </div>
+
+      <!-- Name -->
+
+      <input
+        class="form-control mb-1"
+        placeholder="Name"
+        [(ngModel)]="employee.name"
+        [class.is-invalid]="formSubmitted && !employee.name">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="formSubmitted && !employee.name">
+
+        Name is required
+
+      </div>
+
+      <!-- Email -->
+
+      <input
+        class="form-control mb-1"
+        placeholder="Email"
+        [(ngModel)]="employee.email"
+        [class.is-invalid]="
+          formSubmitted &&
+          (
+            !employee.email ||
+            !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(employee.email)
+          )
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="formSubmitted && !employee.email">
+
+        Email is required
+
+      </div>
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          employee.email &&
+          !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(employee.email)
+        ">
+
+        Enter a valid email address
+
+      </div>
+
+      <!-- Phone -->
+
+      <input
+        class="form-control mb-1"
+        placeholder="Phone Number"
+        [(ngModel)]="employee.phoneNumber"
+        [class.is-invalid]="
+          formSubmitted &&
+          !/^\\d{10}$/.test(employee.phoneNumber)
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !/^\\d{10}$/.test(employee.phoneNumber)
+        ">
+
+        Phone number must contain exactly 10 digits
+
+      </div>
+
+      <!-- Designation -->
+
+      <input
+        class="form-control mb-1"
+        placeholder="Designation"
+        [(ngModel)]="employee.designation"
+        [class.is-invalid]="
+          formSubmitted &&
+          !employee.designation
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.designation
+        ">
+
+        Designation is required
+
+      </div>
+
+      <!-- Joining Date -->
+
+      <input
+        class="form-control mb-1"
+        type="date"
+        [(ngModel)]="employee.joiningDate"
+        [class.is-invalid]="
+          formSubmitted &&
+          !employee.joiningDate
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.joiningDate
+        ">
+
+        Joining Date is required
+
+      </div>
+
+      <!-- Salary -->
+
+      <input
+        class="form-control mb-1"
+        type="number"
+        [(ngModel)]="employee.salary"
+        [class.is-invalid]="
+          formSubmitted &&
+          employee.salary <= 0
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          employee.salary <= 0
+        ">
+
+        Salary must be greater than 0
+
+      </div>
+
+      <!-- Save Button -->
+
+      <button
+        type="button"
+        class="btn btn-success mt-2"
         (click)="saveEmployee()">
 
         Save Employee
