@@ -1,0 +1,61 @@
+<div class="container mt-4">
+
+  <div class="card shadow">
+
+    <div class="card-header">
+
+      <h3>Add Employee</h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <input
+        class="form-control mb-3"
+        placeholder="Employee Code"
+        [(ngModel)]="employee.employeeCode">
+
+      <input
+        class="form-control mb-3"
+        placeholder="Name"
+        [(ngModel)]="employee.name">
+
+      <input
+        class="form-control mb-3"
+        placeholder="Email"
+        [(ngModel)]="employee.email">
+
+      <input
+        class="form-control mb-3"
+        placeholder="Phone"
+        [(ngModel)]="employee.phoneNumber">
+
+      <input
+        class="form-control mb-3"
+        placeholder="Designation"
+        [(ngModel)]="employee.designation">
+
+      <input
+        class="form-control mb-3"
+        type="date"
+        [(ngModel)]="employee.joiningDate">
+
+      <input
+        class="form-control mb-3"
+        type="number"
+        [(ngModel)]="employee.salary">
+
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="saveEmployee()">
+
+        Save Employee
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

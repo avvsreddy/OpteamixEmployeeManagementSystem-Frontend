@@ -1,0 +1,540 @@
+<!-- <div class="container mt-5">
+
+  <div *ngIf="employee">
+
+    <div class="card shadow">
+
+      <div class="card-header bg-primary text-white">
+
+        <h3 class="mb-0">
+          Employee Details
+        </h3>
+
+      </div>
+
+      <div class="card-body">
+
+        <p><strong>ID:</strong> {{ employee.employeeId }}</p>
+
+        <p><strong>Code:</strong> {{ employee.employeeCode }}</p>
+
+        <p><strong>Name:</strong> {{ employee.name }}</p>
+
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+
+        <p><strong>Phone:</strong> {{ employee.phoneNumber }}</p>
+
+        <p><strong>Department:</strong> {{ employee.departmentName }}</p>
+
+        <p><strong>Designation:</strong> {{ employee.designation }}</p>
+
+        <p><strong>Joining Date:</strong> {{ employee.joiningDate | date }}</p>
+
+        <p><strong>Salary:</strong> ₹{{ employee.salary }}</p>
+
+        <button
+          class="btn btn-secondary mt-3"
+          (click)="goBack()">
+
+          Back
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="!employee">
+
+    <div class="alert alert-warning">
+
+      Loading employee details...
+
+    </div>
+
+  </div>
+
+</div> -->
+
+
+
+
+<!-- <div class="container mt-5">
+
+  <div *ngIf="employee">
+
+    <div class="card shadow-lg border-0">
+
+      <div class="card-header bg-primary text-white">
+
+        <h2 class="mb-0">
+          Employee Details
+        </h2>
+
+      </div>
+
+      <div class="card-body">
+
+        <div class="row">
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Employee ID
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.employeeId"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Employee Code
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.employeeCode"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Name
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.name"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Email
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.email"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Phone Number
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.phoneNumber"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Department ID
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.departmentId"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Department Name
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.departmentName"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Designation
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.designation"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Joining Date
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.joiningDate | date:'dd-MM-yyyy'"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Salary
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.salary"
+              readonly>
+
+          </div>
+
+        </div>
+
+        <div class="mt-4">
+
+          <button
+            class="btn btn-secondary me-2"
+            (click)="goBack()">
+
+            Back
+
+          </button>
+
+          <button
+            class="btn btn-warning"
+            [routerLink]="[
+              '/employees/edit',
+              employee.employeeId
+            ]">
+
+            Edit Employee
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="!employee">
+
+    <div class="alert alert-info">
+
+      Loading Employee Details...
+
+    </div>
+
+  </div>
+
+</div> --> 
+
+
+
+
+<!-- <div class="container mt-5">
+
+  <div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+      <h3>
+        Employee Details
+      </h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <div *ngIf="employee; else loadingTemplate">
+
+        <div class="row">
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Employee ID
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.employeeId"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Employee Code
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.employeeCode"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Name
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.name"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Email
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.email"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Phone Number
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.phoneNumber"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Department ID
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.departmentId"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Designation
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.designation"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Joining Date
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.joiningDate"
+              readonly>
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+
+            <label class="fw-bold">
+              Salary
+            </label>
+
+            <input
+              class="form-control"
+              [value]="employee.salary"
+              readonly>
+
+          </div>
+
+        </div>
+
+        <button
+          class="btn btn-secondary"
+          (click)="goBack()">
+
+          Back
+
+        </button>
+
+      </div>
+
+      <ng-template #loadingTemplate>
+
+        <div class="alert alert-info">
+
+          Loading Employee Details...
+
+        </div>
+
+      </ng-template>
+
+    </div>
+
+  </div>
+
+</div> -->
+
+
+
+
+<div class="container mt-5">
+
+  <div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+      <h3>
+        Employee Details
+      </h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <div *ngIf="employee !== null">
+
+        <div class="row">
+
+          <div class="col-md-6 mb-3">
+            <label>ID</label>
+            <input
+              class="form-control"
+              [value]="employee.employeeId"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Code</label>
+            <input
+              class="form-control"
+              [value]="employee.employeeCode"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Name</label>
+            <input
+              class="form-control"
+              [value]="employee.name"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Email</label>
+            <input
+              class="form-control"
+              [value]="employee.email"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Phone</label>
+            <input
+              class="form-control"
+              [value]="employee.phoneNumber"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Department</label>
+            <input
+              class="form-control"
+              [value]="employee.departmentId"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Designation</label>
+            <input
+              class="form-control"
+              [value]="employee.designation"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Joining Date</label>
+            <input
+              class="form-control"
+              [value]="employee.joiningDate"
+              readonly>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label>Salary</label>
+            <input
+              class="form-control"
+              [value]="employee.salary"
+              readonly>
+          </div>
+
+        </div>
+
+        <button
+          class="btn btn-secondary mt-3"
+          (click)="goBack()">
+
+          Back
+
+        </button>
+
+      </div>
+
+      <div *ngIf="employee === null">
+
+        <div class="alert alert-info">
+
+          Loading Employee Details...
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

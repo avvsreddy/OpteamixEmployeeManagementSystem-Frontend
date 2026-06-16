@@ -1,0 +1,88 @@
+<div class="table-responsive">
+
+  <h5 class="mb-3">
+    Total Employees: {{ employees.length }}
+  </h5>
+
+  <table class="table table-bordered table-hover">
+
+    <thead class="table-light">
+
+      <tr>
+
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Designation</th>
+        <th>Salary</th>
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let emp of employees">
+
+        <td>{{ emp.employeeId }}</td>
+
+        <td>{{ emp.employeeCode }}</td>
+
+        <td>{{ emp.name }}</td>
+
+        <td>{{ emp.email }}</td>
+
+        <td>{{ emp.phoneNumber }}</td>
+
+        <td>{{ emp.designation }}</td>
+
+        <td>₹{{ emp.salary }}</td>
+
+        <td>
+
+          <button
+            class="btn btn-primary btn-sm me-1"
+            (click)="viewEmployee(emp.employeeId)">
+
+            View
+
+          </button>
+
+          <button
+            class="btn btn-warning btn-sm me-1"
+            (click)="editEmployee(emp.employeeId)">
+
+            Edit
+
+          </button>
+
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="onDelete(emp.employeeId)">
+
+            Delete
+
+          </button>
+
+        </td>
+
+      </tr>
+
+      <tr *ngIf="employees.length === 0">
+
+        <td colspan="8" class="text-center text-danger">
+
+          No Employees Found
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

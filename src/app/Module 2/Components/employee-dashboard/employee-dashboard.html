@@ -1,0 +1,87 @@
+<div class="container-fluid mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+      <h2 class="fw-bold">
+        Employee Dashboard
+      </h2>
+
+      <p class="text-muted">
+        Manage Employees
+      </p>
+
+    </div>
+
+    <a
+      routerLink="/employees/add"
+      class="btn btn-success">
+
+      + Add Employee
+
+    </a>
+
+  </div>
+
+
+
+
+
+  <div class="row mb-4">
+
+    <div class="col-md-4">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body text-center">
+
+          <h6>Total Employees</h6>
+
+          <h2>{{ totalEmployees }}</h2>
+          
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body text-center">
+
+          <h6>Departments</h6>
+
+          <h2>{{ totalDepartments }}</h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body text-center">
+
+          <h6>Active Employees</h6>
+
+          <h2>{{ activeEmployees }}</h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <app-employee-list
+    [employees]="employees"
+    (deleteEmployee)="onDeleteEmployee($event)">
+  </app-employee-list>
+</div>
