@@ -1,56 +1,113 @@
 <div class="container mt-4">
 
-  <h2>Dashboard Reports</h2>
+  <h2 class="mb-4">Dashboard Reports</h2>
 
-  <div class="row">
+  <div class="row g-3">
 
+    <!-- Employees -->
     <div class="col-md-4">
-      <div class="card p-3" (click)="drillDown('employees')">
-        <h5>Total Employees</h5>
-        <h2>{{ report.totalEmployees }}</h2>
+      <div
+        class="card dashboard-card employee-card p-3"
+        [class.active-card]="selectedSection === 'employees'"
+        (click)="drillDown('employees')">
+
+        <h5 class="mb-2">Total Employees</h5>
+        <span class="report-badge">
+          {{ report.totalEmployees }}
+        </span>
       </div>
     </div>
 
+    <!-- Projects -->
     <div class="col-md-4">
-      <div class="card p-3" (click)="drillDown('projects')">
-        <h5>Total Projects</h5>
-        <h2>{{ report.totalProjects }}</h2>
+      <div
+        class="card dashboard-card project-card p-3"
+        [class.active-card]="selectedSection === 'projects'"
+        (click)="drillDown('projects')">
+
+        <h5 class="mb-2">Total Projects</h5>
+        <span class="report-badge">
+          {{ report.totalProjects }}
+        </span>
       </div>
     </div>
 
+    <!-- Tasks -->
     <div class="col-md-4">
-      <div class="card p-3" (click)="drillDown('tasks')">
-        <h5>Total Tasks</h5>
-        <h2>{{ report.totalTasks }}</h2>
+      <div
+        class="card dashboard-card task-card p-3"
+        [class.active-card]="selectedSection === 'tasks'"
+        (click)="drillDown('tasks')">
+
+        <h5 class="mb-2">Total Tasks</h5>
+        <span class="report-badge">
+          {{ report.totalTasks }}
+        </span>
       </div>
     </div>
 
   </div>
 
   <!-- Employee Details -->
-  <div class="card mt-3" [hidden]="selectedSection !== 'employees'">
+  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'employees'">
     <div class="card-body">
-      <h4>Employee Details</h4>
-      <p>Total Employees: {{ report.totalEmployees }}</p>
+      <h4 class="mb-3">Employee Details</h4>
+
+      <p>
+        Total Employees:
+        <span class="report-badge">
+          {{ report.totalEmployees }}
+        </span>
+      </p>
     </div>
   </div>
 
   <!-- Project Details -->
-  <div class="card mt-3" [hidden]="selectedSection !== 'projects'">
+  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'projects'">
     <div class="card-body">
-      <h4>Project Details</h4>
-      <p>Active Projects: {{ report.activeProjects }}</p>
-      <p>Inactive Projects: {{ report.inactiveProjects }}</p>
-      <p>Completed Projects: {{ report.completedProjects }}</p>
+      <h4 class="mb-3">Project Details</h4>
+
+      <p>
+        Active Projects:
+        <span class="report-badge">
+          {{ report.activeProjects }}
+        </span>
+      </p>
+
+      <p>
+        Inactive Projects:
+        <span class="report-badge">
+          {{ report.inactiveProjects }}
+        </span>
+      </p>
+
+      <p>
+        Completed Projects:
+        <span class="report-badge">
+          {{ report.completedProjects }}
+        </span>
+      </p>
     </div>
   </div>
 
   <!-- Task Details -->
-  <div class="card mt-3" [hidden]="selectedSection !== 'tasks'">
+  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'tasks'">
     <div class="card-body">
-      <h4>Task Details</h4>
-      <p>Completed Tasks: {{ report.completedTasks }}</p>
-      <p>Pending Tasks: {{ report.pendingTasks }}</p>
+      <h4 class="mb-3">Task Details</h4>
+
+      <p>
+        Completed Tasks:
+        <span class="report-badge">
+          {{ report.completedTasks }}
+        </span>
+      </p>
+
+      <p>
+        Pending Tasks:
+        <span class="report-badge">
+          {{ report.pendingTasks }}
+        </span>
+      </p>
     </div>
   </div>
 
