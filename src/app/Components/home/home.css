@@ -1,0 +1,150 @@
+.hero-section {
+  min-height: 110vh;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('https://image.shutterstock.com/image-illustration/internet-high-speed-connection-data-260nw-2283450675.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: -10%;
+  width: 120%;
+  height: 200px;
+  background: white;
+  border-radius: 50% 50% 0 0;
+  z-index: 1;
+}
+
+.hero-content {
+  color: white;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.stats-section {
+  background: #f8f9fa;
+}
+
+.cta-section {
+  background: linear-gradient(
+    135deg,
+    #0d6efd,
+    #084298
+  );
+}
+.btn {
+  border: none;
+  width: 7em;      /* Reduced from 15em */
+  height: 3em;    /* Reduced from 5em */
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;         /* Reduced from 12px */
+  background: #1C1A1C;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: 0.9rem; /* Reduced from medium */
+}
+
+.sparkle {
+  fill: #AAAAAA;
+  transition: all 800ms ease;
+}
+
+
+
+.btn:hover {
+  background: linear-gradient(0deg,#A47CF3,#683FEA);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 180px 0px #9917FF;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+} 
+.landing-section {
+  position: relative;
+  height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.landing-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #ffffff;
+}
+.company-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 380px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: transform 0.1s linear;
+}
+.human-hand {
+    transform-origin: left center;
+  position: absolute;
+  left: -50px; /* Push slightly outside screen */
+  bottom: 0;
+  width: 35%;
+  max-width: 400px;
+  z-index: 2;
+  transform-origin: left center; /* Grow from edge */
+}
+
+.digital-hand {
+    transform-origin: right center;
+  position: absolute;
+  right: -50px; /* Push slightly outside screen */
+  top: 0;
+  width: 35%;
+  max-width: 400px;
+  z-index: 2;
+  transform-origin: right center; /* Grow from edge */
+}
