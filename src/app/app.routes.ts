@@ -21,11 +21,13 @@ export const routes: Routes = [
   { path: 'employees/edit/:id', component: EditEmployeeComponent, title: 'Edit Employee'},
   { path: 'employees/details/:id', component: EmployeeDetailsComponent, title: 'Employee Details'},
 
-  {path: 'report', component: Report, title: 'Report'},
-  // {path:'**', component: NotFound, title: 'Not Found'},  
-
   { path: 'projects/dashboard', component: ProjectDashboard, title: 'Project Dashboard' },
   { path: 'projects/details/:id', component: ProjectDetail, title: 'Project Detail' },
   { path: 'projects/create', component: ProjectCreate, title: 'Create Project' },
-  { path: 'projects/edit/:id', component: ProjectUpdate, title: 'Edit Project' }
+  { path: 'projects/edit/:id', component: ProjectUpdate, title: 'Edit Project' },
+
+  {path: 'report', component: Report, title: 'Report'},
+  {path:'**', component: NotFound, title: 'Not Found'},  
+
+  
 ];
