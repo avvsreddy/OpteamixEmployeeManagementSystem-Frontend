@@ -1,0 +1,139 @@
+<div class="dashboard-container px-4 py-4">
+
+  <!-- Header -->
+  <div class="text-center mb-2">
+    <h2 style="color:#1e293b; font-weight:700; margin-bottom:0.25rem;">PROJECT DASHBOARD</h2>
+    <p style="color:#64748b; margin:0 0 0.75rem 0; font-size:14px;">Overview of current projects, budgets and statuses.</p>
+  </div>
+  <div class="d-flex justify-content-end mb-4">
+    <button class="btn"
+      style="background:#334155; color:#ffffff; padding:0.75rem 1.5rem; border-radius:0.75rem; font-size:14px; font-weight:600; letter-spacing:0.5px;"
+      [routerLink]="['/projects/create']">
+      + Create Project
+    </button>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert" style="background:#fee2e2; color:#991b1b; border:none; border-radius:0.75rem;">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+
+    <div class="col">
+      <div class="card border-0 h-100"
+        style="background:linear-gradient(135deg,#87a2c6,#2d5986); border-radius:0.75rem; box-shadow:0 6px 18px rgba(30,58,95,0.12);">
+        <div class="card-body text-center py-1 px-2">
+          <h3 style="color:#ffffff; font-size:22px; font-weight:700; margin-bottom:4px;">{{ totalProjects }}</h3>
+          <p style="color:#a8c4e0; font-size:10px; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Total Projects</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 h-100"
+        style="background:linear-gradient(135deg,rgb(93, 118, 103),#16a34a); border-radius:0.75rem; box-shadow:0 4px 15px rgba(20,83,45,0.25);">
+        <div class="card-body text-center py-1 px-2">
+          <h3 style="color:#ffffff; font-size:22px; font-weight:700; margin-bottom:4px;">{{ activeProjects }}</h3>
+          <p style="color:#bbf7d0; font-size:10px; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Active</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 h-100"
+        style="background:linear-gradient(135deg,#77778d,#71717a); border-radius:0.75rem; box-shadow:0 4px 15px rgba(63,63,70,0.25);">
+        <div class="card-body text-center py-1 px-2">
+          <h3 style="color:#ffffff; font-size:22px; font-weight:700; margin-bottom:4px;">{{ inactiveProjects }}</h3>
+          <p style="color:#d4d4d8; font-size:10px; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Inactive</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 h-100"
+        style="background:linear-gradient(135deg,#998bad,#7c3aed); border-radius:0.75rem; box-shadow:0 4px 15px rgba(76,29,149,0.25);">
+        <div class="card-body text-center py-1 px-2">
+          <h3 style="color:#ffffff; font-size:22px; font-weight:700; margin-bottom:4px;">{{ completedProjects }}</h3>
+          <p style="color:#ddd6fe; font-size:10px; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Completed</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-0 h-100"
+        style="background:linear-gradient(135deg,#aa897f,#ea580c); border-radius:0.75rem; box-shadow:0 4px 15px rgba(124,45,18,0.25);">
+        <div class="card-body text-center py-1 px-2">
+          <h3 style="color:#ffffff; font-size:22px; font-weight:700; margin-bottom:4px;">{{ totalBudget | currency:'INR':'symbol' }}</h3>
+          <p style="color:#fed7aa; font-size:10px; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Total Budget</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive shadow-sm overflow-hidden"
+    style="border-radius:1rem; border:1px solid #e2e8f0;">
+    <table class="table table-hover align-middle mb-0">
+      <thead style="background:#1e293b;">
+        <tr>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">ID</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Project Name</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Client Name</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Start Date</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">End Date</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Budget</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Status</th>
+          <th style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:16px; font-weight:600;">Actions</th>
+        </tr>
+      </thead>
+      <tbody style="background:#ffffff;">
+        <tr *ngFor="let project of projects"
+          style="border-bottom:1px solid #f1f5f9; transition:background 0.2s;">
+          <td style="padding:16px; color:#64748b; font-size:13px;">{{ project.projectId }}</td>
+          <td style="padding:16px; color:#1e293b; font-weight:600;">{{ project.projectName }}</td>
+          <td style="padding:16px; color:#475569;">{{ project.clientName }}</td>
+          <td style="padding:16px; color:#475569; font-size:13px;">{{ project.startDate | date:'mediumDate' }}</td>
+          <td style="padding:16px; color:#475569; font-size:13px;">{{ project.endDate | date:'mediumDate' }}</td>
+          <td style="padding:16px; color:#1e293b; font-weight:600;">{{ project.budget | currency:'INR':'symbol' }}</td>
+          <td style="padding:16px;">
+            <span class="badge rounded-pill px-3 py-2"
+              [ngStyle]="{
+                'background-color': project.status === 'Active'    ? '#dcfce7' :
+                                    project.status === 'Inactive'  ? '#f1f5f9' :
+                                    project.status === 'Completed' ? '#ede9fe' : '#f1f5f9',
+                'color':            project.status === 'Active'    ? '#14532d' :
+                                    project.status === 'Inactive'  ? '#475569' :
+                                    project.status === 'Completed' ? '#4c1d95' : '#475569',
+                'font-weight': '600',
+                'font-size': '12px'
+              }">
+              {{ project.status }}
+            </span>
+          </td>
+          <td style="padding:16px;">
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm"
+                style="background:#e0f2fe; color:#075985; border-radius:0.6rem; padding:0.4rem 0.85rem; font-size:12px; font-weight:600; border:none;"
+                [routerLink]="['/projects/details', project.projectId]">View</button>
+              <button class="btn btn-sm"
+                style="background:#fef9c3; color:#854d0e; border-radius:0.6rem; padding:0.4rem 0.85rem; font-size:12px; font-weight:600; border:none;"
+                [routerLink]="['/projects/edit', project.projectId]">Edit</button>
+              <button class="btn btn-sm"
+                style="background:#fee2e2; color:#991b1b; border-radius:0.6rem; padding:0.4rem 0.85rem; font-size:12px; font-weight:600; border:none;"
+                (click)="deleteProject(project.projectId)">Delete</button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="projects.length === 0">
+          <td colspan="8" class="text-center py-5" style="color:#94a3b8; font-size:14px;">
+            No projects available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

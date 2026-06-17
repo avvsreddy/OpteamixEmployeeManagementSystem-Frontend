@@ -1,4 +1,6 @@
 .hero-section {
+  position: relative;
+  overflow: hidden;
   min-height: 110vh;
 
   background:
@@ -31,6 +33,7 @@
   color: white;
   max-width: 700px;
 }
+
 
 .hero-content h1 {
   font-size: 4rem;

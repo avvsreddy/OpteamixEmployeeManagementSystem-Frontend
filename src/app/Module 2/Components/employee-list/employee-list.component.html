@@ -1,9 +1,5 @@
 <div class="table-responsive">
 
-  <h5 class="mb-3">
-    Total Employees: {{ employees.length }}
-  </h5>
-
   <table class="table table-bordered table-hover">
 
     <thead class="table-light">
@@ -43,29 +39,33 @@
 
         <td>
 
-          <button
-            class="btn btn-primary btn-sm me-1"
-            (click)="viewEmployee(emp.employeeId)">
+          <div class="d-flex gap-2">
 
-            View
+            <button
+              class="btn btn-sm btn-view"
+              (click)="viewEmployee(emp.employeeId)">
 
-          </button>
+              View
 
-          <button
-            class="btn btn-warning btn-sm me-1"
-            (click)="editEmployee(emp.employeeId)">
+            </button>
 
-            Edit
+            <button
+              class="btn btn-sm btn-edit"
+              (click)="editEmployee(emp.employeeId)">
 
-          </button>
+              Edit
 
-          <button
-            class="btn btn-danger btn-sm"
-            (click)="onDelete(emp.employeeId)">
+            </button>
 
-            Delete
+            <button
+              class="btn btn-sm btn-delete"
+              (click)="onDelete(emp.employeeId)">
 
-          </button>
+              Delete
+
+            </button>
+
+          </div>
 
         </td>
 

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { catchError, Observable, of } from 'rxjs';
 
@@ -14,6 +14,7 @@ import { DashboardReport } from '../models/Report';
 export class Report implements OnInit {
 
  private reportService = inject(ReportService);
+private cdr:ChangeDetectorRef = inject(ChangeDetectorRef);
 
   report: DashboardReport = {
     totalEmployees: 0,
@@ -44,6 +45,7 @@ export class Report implements OnInit {
       )
       .subscribe(data => {
         this.report = data;
+        this.cdr.detectChanges();
       });
   }
 

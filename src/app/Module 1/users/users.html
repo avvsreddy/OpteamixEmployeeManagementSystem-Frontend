@@ -1,0 +1,87 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">
+      <i class="bi bi-people-fill me-2"></i>All Users
+    </h4>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+    <p class="mt-2">Loading users...</p>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    <i class="bi bi-check-circle me-2"></i>{{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    <i class="bi bi-exclamation-circle me-2"></i>{{ errorMessage }}
+  </div>
+
+  <!-- Users Table -->
+  <div *ngIf="!isLoading">
+    <div class="dashboard-card">
+       <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>SL No</th>
+            <th>Photo</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Employee Code</th>
+            <th>Phone</th>
+            <th>Roles</th>
+            <th>Assign Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <img *ngIf="user.imageUrl" 
+                [src]="user.imageUrl" 
+                class="user-table-avatar"
+                alt="">
+              <div *ngIf="!user.imageUrl" class="user-table-avatar-placeholder">
+                <i class="bi bi-person-fill"></i>
+              </div>
+            </td>
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.department || 'N/A' }}</td>
+            <td>{{ user.employeeCode || 'N/A' }}</td>
+            <td>{{ user.phoneNumber || 'N/A' }}</td>
+            <td>
+              <span *ngFor="let role of user.roles"
+                class="badge bg-primary me-1">
+                {{ role }}
+              </span>
+            </td>
+            <td>
+              <div class="d-flex gap-2">
+                <select class="form-select form-select-sm"
+                  [(ngModel)]="user.selectedRole"
+                  style="width: 130px;">
+                  <option value="">Select Role</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Manager">Manager</option>
+                  <option value="Employee">Employee</option>
+                </select>
+                <button class="btn btn-primary btn-sm"
+                  (click)="assignRole(user)">
+                  Assign
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+</div>

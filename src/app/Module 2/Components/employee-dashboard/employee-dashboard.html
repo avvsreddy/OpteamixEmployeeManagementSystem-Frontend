@@ -1,14 +1,14 @@
-<div class="container-fluid mt-4">
+<div class="container-fluid dashboard-container">
 
   <div class="d-flex justify-content-between align-items-center mb-4">
 
     <div>
 
-      <h2 class="fw-bold">
+      <h2 class="dashboard-title">
         Employee Dashboard
       </h2>
 
-      <p class="text-muted">
+      <p class="dashboard-subtitle">
         Manage Employees
       </p>
 
@@ -16,39 +16,39 @@
 
     <a
       routerLink="/employees/add"
-      class="btn btn-success">
+      class="btn action-btn">
 
-      + Add Employee
+       Add Employee
 
     </a>
 
   </div>
 
-
-
-
-
   <div class="row mb-4">
 
-    <div class="col-md-4">
+    <!-- Total Employees -->
 
-      <div class="card shadow-sm">
+    <div class="col-md-4 mb-3">
+
+      <div class="card summary-card card-total shadow">
 
         <div class="card-body text-center">
 
           <h6>Total Employees</h6>
 
           <h2>{{ totalEmployees }}</h2>
-          
+
         </div>
 
       </div>
 
     </div>
 
-    <div class="col-md-4">
+    <!-- Departments -->
 
-      <div class="card shadow-sm">
+    <div class="col-md-4 mb-3">
+
+      <div class="card summary-card card-department shadow">
 
         <div class="card-body text-center">
 
@@ -62,9 +62,11 @@
 
     </div>
 
-    <div class="col-md-4">
+    <!-- Active Employees -->
 
-      <div class="card shadow-sm">
+    <div class="col-md-4 mb-3">
+
+      <div class="card summary-card card-active shadow">
 
         <div class="card-body text-center">
 
@@ -80,8 +82,43 @@
 
   </div>
 
+  <!-- added now -->
+
   <app-employee-list
-    [employees]="employees"
+    [employees]="paginatedEmployees"
     (deleteEmployee)="onDeleteEmployee($event)">
   </app-employee-list>
+
+  <div class="d-flex justify-content-center mt-4 gap-2">
+
+  <button
+    class="btn btn-outline-primary"
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+
+    Previous
+
+  </button>
+
+  <span class="align-self-center">
+
+    Page {{ currentPage }}
+    of
+    {{ totalPages }}
+
+  </span>
+
+  <button
+    class="btn btn-outline-primary"
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+
+    Next
+
+  </button>
+
+</div>
+
+<!-- added now -->
+
 </div>

@@ -21,6 +21,10 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 export class EmployeeDashboardComponent implements OnInit {
 
   employees: Employee[] = [];
+
+  currentPage = 1;
+  itemsPerPage = 20;
+
   //employees$!: Observable<Employee[]>;
   totalEmployees = 0;
   totalDepartments = 0;
@@ -105,6 +109,38 @@ export class EmployeeDashboardComponent implements OnInit {
 
       });
 
+  }
+
+  get paginatedEmployees(): Employee[] {
+    const start = 
+      (this.currentPage - 1) * this.itemsPerPage;
+
+    const end = 
+      start + this.itemsPerPage;
+
+      return this.employees.slice(
+        start,
+        end
+      );
+  }
+
+  get totalPages(): number {
+    return Math.ceil(
+      this.employees.length /
+      this.itemsPerPage
+    );
+  }
+
+  previousPage() {
+    if(this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
   }
 
 }

@@ -1,0 +1,43 @@
+body {
+  background: #eef4fb;
+}
+
+.employee-form-container {
+  background: #eef4fb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.employee-card {
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff, #f6f9ff);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.employee-title {
+  color: #34495e;
+  font-weight: 600;
+}
+
+.employee-subtitle {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.employee-input {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.employee-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  background: linear-gradient(135deg,#475569,#334155);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(51,65,85,0.3);
+}

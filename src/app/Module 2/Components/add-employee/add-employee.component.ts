@@ -1,278 +1,11 @@
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import {FormsModule} from '@angular/forms';
-// import {Router} from '@angular/router';
-// import {EmployeeCreateDto} from '../../Models/employee';
-// import {EmployeeService} from '../../Services/employee.service';
-
-// @Component({
-//   selector: 'app-add-employee',
-//   standalone: true,
-//   imports: [
-//     CommonModule,
-//     FormsModule
-//   ],
-//   templateUrl: './add-employee.component.html'
-// })
-// export class AddEmployeeComponent {
-
-//   employee: EmployeeCreateDto = {
-
-//     employeeCode: '',
-//     name: '',
-//     email: '',
-//     phoneNumber: '',
-//     departmentId: 1,
-//     designation: '',
-//     joiningDate: '',
-//     salary: 0
-
-//   };
-
-//   constructor(
-//     private employeeService: EmployeeService,
-//     private router: Router
-//   ) {}
-
-//   saveEmployee(): void {
-
-//     this.employeeService
-//       .createEmployee(this.employee)
-//       .subscribe({
-
-//         next: () => {
-
-//           alert('Employee Added');
-
-//           this.router.navigate([
-//             '/employees'
-//           ]);
-//           console.log('Save Clicked');
-//         }
-
-//       });
-
-//   }
-
-// } /// code1
-
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
-// import { Router } from '@angular/router';
-
-// import { EmployeeCreateDto } from '../../Models/employee';
-// import { EmployeeService } from '../../Services/employee.service';
-
-// @Component({
-//   selector: 'app-add-employee',
-//   standalone: true,
-//   imports: [
-//     CommonModule,
-//     FormsModule
-//   ],
-//   templateUrl: './add-employee.component.html'
-// })
-// export class AddEmployeeComponent {
-
-//   employee: EmployeeCreateDto = {
-//     employeeCode: '',
-//     name: '',
-//     email: '',
-//     phoneNumber: '',
-//     departmentId: 1,
-//     designation: '',
-//     joiningDate: '',
-//     salary: 0
-//   };
-
-//   formSubmitted = false;
-
-//   successMessage = '';
-//   errorMessage = '';
-
-//   constructor(
-//     private employeeService: EmployeeService,
-//     private router: Router
-//   ) { }
-
-  // saveEmployee(): void {
-
-  //   this.formSubmitted = true;
-
-  //   if (!this.isFormValid()) {
-  //     return;
-  //   }
-
-  //   this.employeeService
-  //     .createEmployee(this.employee)
-  //     .subscribe({
-
-  //       next: () => {
-
-  //         this.successMessage = 'Employee Added Successfully';
-
-  //         this.router.navigate([
-  //           '/employees'
-  //         ]);
-
-  //       },
-
-  //       error: (error) => {
-
-  //         console.log(error);
-
-  //         this.errorMessage = 'Failed to save employee';
-
-  //       }
-
-  //     });
-
-  // }
-
-  // saveEmployee(): void {
-
-  // this.formSubmitted = true;
-
-  // if (!this.isFormValid()) {
-  //   return;
-  // }
-
-//   this.employeeService
-//     .createEmployee(this.employee)
-//     .subscribe({
-
-//       next: () => {
-
-//         this.successMessage =
-//           'Employee Added Successfully';
-
-//         this.errorMessage = '';
-
-//         setTimeout(() => {
-
-//           this.router.navigate([
-//             '/employees'
-//           ]);
-
-//         }, 2000);
-
-//       },
-
-//       error: (error) => {
-
-//         console.log(error);
-
-//         this.errorMessage =
-//           'Failed to save employee';
-
-//         this.successMessage = '';
-
-//       }
-
-//     });
-
-// }
-
-
-//   saveEmployee(): void {
-
-//   this.formSubmitted = true;
-
-//   if (!this.isFormValid()) {
-//     return;
-//   }
-
-//   this.employeeService
-//     .createEmployee(this.employee)
-//     .subscribe({
-
-//       next: () => {
-
-//         this.successMessage =
-//           'Employee Added Successfully';
-
-//         this.errorMessage = '';
-
-//         setTimeout(() => {
-
-//           this.router.navigate([
-//             '/employees'
-//           ]);
-
-//         }, 2000);
-
-//       },
-
-//       error: (error) => {
-
-//         console.log(error);
-
-//         this.errorMessage =
-//           'Failed to save employee';
-
-//         this.successMessage = '';
-
-//       }
-
-//     });
-
-// }
-
-//   isFormValid(): boolean {
-
-//     return (
-
-//       this.employee.employeeCode.trim() !== '' &&
-
-//       this.employee.name.trim() !== '' &&
-
-//       this.employee.email.trim() !== '' &&
-
-//       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-//         this.employee.email
-//       ) &&
-
-//       /^\d{10}$/.test(
-//         this.employee.phoneNumber
-//       ) &&
-
-//       this.employee.designation.trim() !== '' &&
-
-//       this.employee.joiningDate !== '' &&
-
-//       this.employee.salary > 0
-
-//     );
-
-//   }
-
-//   isValidEmail(): boolean {
-
-//   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-//     this.employee.email
-//   );
-
-// }
-
-// isValidPhone(): boolean {
-
-//   return /^\d{10}$/.test(
-//     this.employee.phoneNumber
-//   );
-
-// }
-
-// }
-
-
-import { Component } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { EmployeeCreateDto } from '../../Models/employee';
 import { EmployeeService } from '../../Services/employee.service';
+import { DepartmentService } from '../../Services/department.service';
+import { Department } from '../../Models/department';
 
 @Component({
   selector: 'app-add-employee',
@@ -283,7 +16,7 @@ import { EmployeeService } from '../../Services/employee.service';
   ],
   templateUrl: './add-employee.component.html'
 })
-export class AddEmployeeComponent {
+export class AddEmployeeComponent implements OnInit { 
 
   employee: EmployeeCreateDto = {
     employeeCode: '',
@@ -293,15 +26,37 @@ export class AddEmployeeComponent {
     departmentId: 1,
     designation: '',
     joiningDate: '',
-    salary: 0
+    salary: null as any
   };
 
   formSubmitted = false;
 
+  departments: Department[] = []; 
+
   constructor(
     private employeeService: EmployeeService,
+    private departmentServices: DepartmentService,
     private router: Router
   ) { }
+
+
+  
+  //added now
+  
+  ngOnInit(): void {
+
+    this.departmentServices.getDepartments().subscribe({
+      next: (Response) => {
+        console.log('Departments: ',Response);
+        this.departments = Response;
+      },
+      error: (error) => {
+        console.log('Department Error: ',error);
+      }
+    });
+  }
+
+
 
   saveEmployee(): void {
 

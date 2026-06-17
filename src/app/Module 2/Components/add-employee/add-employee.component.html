@@ -1,70 +1,3 @@
-<!-- <div class="container mt-4">
-
-  <div class="card shadow">
-
-    <div class="card-header">
-
-      <h3>Add Employee</h3>
-
-    </div>
-
-    <div class="card-body">
-
-      <input
-        class="form-control mb-3"
-        placeholder="Employee Code"
-        [(ngModel)]="employee.employeeCode">
-
-      <input
-        class="form-control mb-3"
-        placeholder="Name"
-        [(ngModel)]="employee.name">
-
-      <input
-        class="form-control mb-3"
-        placeholder="Email"
-        [(ngModel)]="employee.email">
-
-      <input
-        class="form-control mb-3"
-        placeholder="Phone"
-        [(ngModel)]="employee.phoneNumber">
-
-      <input
-        class="form-control mb-3"
-        placeholder="Designation"
-        [(ngModel)]="employee.designation">
-
-      <input
-        class="form-control mb-3"
-        type="date"
-        [(ngModel)]="employee.joiningDate">
-
-      <input
-        class="form-control mb-3"
-        type="number"
-        [(ngModel)]="employee.salary">
-
-      <button
-        type="button"
-        class="btn btn-success"
-        (click)="saveEmployee()">
-
-        Save Employee
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div> --> 
-<!-- code1 -->
-
-
-
-
-
 <div class="container mt-4">
 
   <div class="card shadow">
@@ -196,16 +129,42 @@
 
       </div>
 
-      <!-- Joining Date -->
 
-      <input
-        class="form-control mb-1"
-        type="date"
-        [(ngModel)]="employee.joiningDate"
-        [class.is-invalid]="
-          formSubmitted &&
-          !employee.joiningDate
-        ">
+      <label class="form-label fw-normal">
+  Department
+</label>
+
+<select
+  class="form-select mb-3"
+  [(ngModel)]="employee.departmentId"
+  name="departmentId">
+
+  <option
+    *ngFor="let dept of departments"
+    [value]="dept.departmentId">
+
+
+
+    {{dept.departmentId}} - {{ dept.name }}
+
+  </option>
+
+</select>
+      
+      
+      <!-- Date of Joining -->
+
+
+        <label class="form-label fw-normal">Date of Joining</label>
+
+<input
+  class="form-control mb-1"
+  type="date"
+  [(ngModel)]="employee.joiningDate"
+  [class.is-invalid]="
+    formSubmitted &&
+    !employee.joiningDate
+  ">
 
       <div
         class="text-danger mb-3"
@@ -223,6 +182,7 @@
       <input
         class="form-control mb-1"
         type="number"
+        placeholder="Salary"
         [(ngModel)]="employee.salary"
         [class.is-invalid]="
           formSubmitted &&
@@ -247,7 +207,7 @@
         class="btn btn-success mt-2"
         (click)="saveEmployee()">
 
-        Save Employee
+        Save
 
       </button>
 
