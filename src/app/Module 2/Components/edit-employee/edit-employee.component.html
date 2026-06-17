@@ -10,43 +10,200 @@
 
     <div class="card-body">
 
-      <input
-        class="form-control mb-3"
-        [(ngModel)]="employee.employeeCode">
+      <div
+  *ngIf="successMessage"
+  class="alert alert-success alert-dismissible fade show">
+
+  {{ message }}
+
+  <button
+    type="button"
+    class="btn-close"
+    (click)="successMessage=''">
+  </button>
+
+</div>
+
+<div
+  *ngIf="errorMessage"
+  class="alert alert-danger alert-dismissible fade show">
+
+  {{ errorMessage }}
+
+  <button
+    type="button"
+    class="btn-close"
+    (click)="errorMessage=''">
+  </button>
+
+</div>
+
+      <div
+         *ngIf="formSubmitted && !isFormValid()"
+          class="alert alert-danger">
+
+          Mandatory fields are not filled correctly.
+
+      </div>
+
 
       <input
-        class="form-control mb-3"
-        [(ngModel)]="employee.name">
+        class="form-control mb-1"
+        [(ngModel)]="employee.employeeCode"
+        [class.is-invalid]="
+          formSubmitted &&
+          !employee.employeeCode
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.employeeCode
+        ">
+      
+        Employee Code is required
+      
+      </div>
 
       <input
-        class="form-control mb-3"
-        [(ngModel)]="employee.email">
+        class="form-control mb-1"
+        [(ngModel)]="employee.name"
+        [class.is-invalid]="
+        formSubmitted &&
+        !employee.name
+      ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.name
+        ">
+      
+        Name is required
+          
+      </div>
 
       <input
-        class="form-control mb-3"
-        [(ngModel)]="employee.phoneNumber">
+        class="form-control mb-1"
+        [(ngModel)]="employee.email"
+        [class.is-invalid]="
+          formSubmitted &&
+          (
+            !employee.email ||
+            !isValidEmail()
+          )
+        ">
+
+      <div
+        class="text-danger mb-2"
+        *ngIf="
+          formSubmitted &&
+          !employee.email
+        ">
+
+        Email is required
+
+      </div>
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          employee.email &&
+          !isValidEmail()
+        ">
+
+        Enter a valid email address
+
+      </div>
 
       <input
-        class="form-control mb-3"
-        [(ngModel)]="employee.designation">
+        class="form-control mb-1"
+        [(ngModel)]="employee.phoneNumber"
+        [class.is-invalid]="
+          formSubmitted &&
+          !isValidPhone()
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !isValidPhone()
+        ">
+      
+        Phone number must contain exactly 10 digits
+          
+      </div>
+
+      <input
+        class="form-control mb-1"
+        [(ngModel)]="employee.designation"
+        [class.is-invalid]="
+          formSubmitted &&
+          !employee.designation
+        ">
+
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.designation
+        ">
+
+        Designation is required
+
+      </div>
 
       <input
         type="date"
-        class="form-control mb-3"
-        [(ngModel)]="employee.joiningDate">
+        class="form-control mb-1"
+        [(ngModel)]="employee.joiningDate"
+        [class.is-invalid]="
+          formSubmitted &&
+          !employee.joiningDate
+        ">
 
-      <input
-        type="number"
-        class="form-control mb-3"
-        [(ngModel)]="employee.salary">
+      <div
+        class="text-danger mb-3"
+        *ngIf="
+          formSubmitted &&
+          !employee.joiningDate
+        ">
+      
+        Joining Date is required
 
-      <button
-        class="btn btn-success"
-        (click)="updateEmployee()">
+      </div>
 
-        Update Employee
+    <input
+      type="number"
+      class="form-control mb-1"
+      [(ngModel)]="employee.salary"
+      [class.is-invalid]="
+        formSubmitted &&
+        employee.salary <= 0
+      ">
 
-      </button>
+    <div
+      class="text-danger mb-3"
+      *ngIf="
+        formSubmitted &&
+        employee.salary <= 0
+      ">
+
+      Salary must be greater than 0
+
+    </div>
+
+    <button
+      class="btn btn-success"
+      (click)="updateEmployee()">
+    
+      Update Employee
+      
+    </button>
 
     </div>
 

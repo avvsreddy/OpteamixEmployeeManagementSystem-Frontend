@@ -56,7 +56,217 @@
 
 // } /// code1
 
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+// import { Router } from '@angular/router';
+
+// import { EmployeeCreateDto } from '../../Models/employee';
+// import { EmployeeService } from '../../Services/employee.service';
+
+// @Component({
+//   selector: 'app-add-employee',
+//   standalone: true,
+//   imports: [
+//     CommonModule,
+//     FormsModule
+//   ],
+//   templateUrl: './add-employee.component.html'
+// })
+// export class AddEmployeeComponent {
+
+//   employee: EmployeeCreateDto = {
+//     employeeCode: '',
+//     name: '',
+//     email: '',
+//     phoneNumber: '',
+//     departmentId: 1,
+//     designation: '',
+//     joiningDate: '',
+//     salary: 0
+//   };
+
+//   formSubmitted = false;
+
+//   successMessage = '';
+//   errorMessage = '';
+
+//   constructor(
+//     private employeeService: EmployeeService,
+//     private router: Router
+//   ) { }
+
+  // saveEmployee(): void {
+
+  //   this.formSubmitted = true;
+
+  //   if (!this.isFormValid()) {
+  //     return;
+  //   }
+
+  //   this.employeeService
+  //     .createEmployee(this.employee)
+  //     .subscribe({
+
+  //       next: () => {
+
+  //         this.successMessage = 'Employee Added Successfully';
+
+  //         this.router.navigate([
+  //           '/employees'
+  //         ]);
+
+  //       },
+
+  //       error: (error) => {
+
+  //         console.log(error);
+
+  //         this.errorMessage = 'Failed to save employee';
+
+  //       }
+
+  //     });
+
+  // }
+
+  // saveEmployee(): void {
+
+  // this.formSubmitted = true;
+
+  // if (!this.isFormValid()) {
+  //   return;
+  // }
+
+//   this.employeeService
+//     .createEmployee(this.employee)
+//     .subscribe({
+
+//       next: () => {
+
+//         this.successMessage =
+//           'Employee Added Successfully';
+
+//         this.errorMessage = '';
+
+//         setTimeout(() => {
+
+//           this.router.navigate([
+//             '/employees'
+//           ]);
+
+//         }, 2000);
+
+//       },
+
+//       error: (error) => {
+
+//         console.log(error);
+
+//         this.errorMessage =
+//           'Failed to save employee';
+
+//         this.successMessage = '';
+
+//       }
+
+//     });
+
+// }
+
+
+//   saveEmployee(): void {
+
+//   this.formSubmitted = true;
+
+//   if (!this.isFormValid()) {
+//     return;
+//   }
+
+//   this.employeeService
+//     .createEmployee(this.employee)
+//     .subscribe({
+
+//       next: () => {
+
+//         this.successMessage =
+//           'Employee Added Successfully';
+
+//         this.errorMessage = '';
+
+//         setTimeout(() => {
+
+//           this.router.navigate([
+//             '/employees'
+//           ]);
+
+//         }, 2000);
+
+//       },
+
+//       error: (error) => {
+
+//         console.log(error);
+
+//         this.errorMessage =
+//           'Failed to save employee';
+
+//         this.successMessage = '';
+
+//       }
+
+//     });
+
+// }
+
+//   isFormValid(): boolean {
+
+//     return (
+
+//       this.employee.employeeCode.trim() !== '' &&
+
+//       this.employee.name.trim() !== '' &&
+
+//       this.employee.email.trim() !== '' &&
+
+//       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+//         this.employee.email
+//       ) &&
+
+//       /^\d{10}$/.test(
+//         this.employee.phoneNumber
+//       ) &&
+
+//       this.employee.designation.trim() !== '' &&
+
+//       this.employee.joiningDate !== '' &&
+
+//       this.employee.salary > 0
+
+//     );
+
+//   }
+
+//   isValidEmail(): boolean {
+
+//   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+//     this.employee.email
+//   );
+
+// }
+
+// isValidPhone(): boolean {
+
+//   return /^\d{10}$/.test(
+//     this.employee.phoneNumber
+//   );
+
+// }
+
+// }
+
+
+import { Component } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -154,5 +364,21 @@ export class AddEmployeeComponent {
     );
 
   }
+
+  isValidEmail(): boolean {
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+    this.employee.email
+  );
+
+}
+
+isValidPhone(): boolean {
+
+  return /^\d{10}$/.test(
+    this.employee.phoneNumber
+  );
+
+}
 
 }

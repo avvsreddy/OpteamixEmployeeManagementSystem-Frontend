@@ -25,9 +25,48 @@ export class EditEmployeeComponent
 implements OnInit {
 
   employee!: Employee;
-
-
   formSubmitted = false;
+  
+
+  isValidEmail(): boolean {
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+    this.employee.email
+  );
+
+}
+
+isValidPhone(): boolean {
+
+  return /^\d{10}$/.test(
+    this.employee.phoneNumber
+  );
+
+}
+
+isFormValid(): boolean {
+
+  return (
+
+    this.employee.employeeCode?.trim() !== '' &&
+
+    this.employee.name?.trim() !== '' &&
+
+    this.employee.email?.trim() !== '' &&
+
+    this.isValidEmail() &&
+
+    this.isValidPhone() &&
+
+    this.employee.designation?.trim() !== '' &&
+
+    this.employee.joiningDate !== '' &&
+
+    this.employee.salary > 0
+
+  );
+
+}
 
 
   constructor(
@@ -57,6 +96,11 @@ implements OnInit {
   }
 
   updateEmployee(): void {
+    this.formSubmitted = true;
+    if(!this.isFormValid()) {
+      return;
+    }
+    
     this.employeeService
       .updateEmployee(
         this.employee.employeeId,
@@ -79,5 +123,53 @@ implements OnInit {
       });
 
   }
+
+
+//   updateEmployee(): void {
+
+//   this.formSubmitted = true;
+
+//   if (!this.isFormValid()) {
+//     return;
+//   }
+
+//   this.employeeService
+//     .updateEmployee(
+//       this.employee.employeeId,
+//       this.employee
+//     )
+//     .subscribe({
+
+//       next: () => {
+
+//         this.successMessage =
+//           'Employee Updated Successfully';
+
+//         this.errorMessage = '';
+
+//         setTimeout(() => {
+
+//           this.router.navigate([
+//             '/employees'
+//           ]);
+
+//         }, 2000);
+
+//       },
+
+//       error: (error) => {
+
+//         console.log(error);
+
+//         this.errorMessage =
+//           'Failed to update employee';
+
+//         this.successMessage = '';
+
+//       }
+
+//     });
+
+// }
 
 }

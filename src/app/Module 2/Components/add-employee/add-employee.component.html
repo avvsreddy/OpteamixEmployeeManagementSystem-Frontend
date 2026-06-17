@@ -128,8 +128,7 @@
         [class.is-invalid]="
           formSubmitted &&
           (
-            !employee.email ||
-            !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(employee.email)
+            !employee.email || !isValidEmail()
           )
         ">
 
@@ -146,7 +145,7 @@
         *ngIf="
           formSubmitted &&
           employee.email &&
-          !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(employee.email)
+          !isValidEmail()
         ">
 
         Enter a valid email address
@@ -161,14 +160,14 @@
         [(ngModel)]="employee.phoneNumber"
         [class.is-invalid]="
           formSubmitted &&
-          !/^\\d{10}$/.test(employee.phoneNumber)
+          !isValidPhone()
         ">
 
       <div
         class="text-danger mb-3"
         *ngIf="
           formSubmitted &&
-          !/^\\d{10}$/.test(employee.phoneNumber)
+          !isValidPhone()
         ">
 
         Phone number must contain exactly 10 digits

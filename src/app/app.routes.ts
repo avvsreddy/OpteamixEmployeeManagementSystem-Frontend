@@ -14,7 +14,7 @@ import { EmployeeDetailsComponent } from './Module 2/Components/employee-details
 import { EmployeeListComponent } from './Module 2/Components/employee-list/employee-list.component';
 
 export const routes: Routes = [
-  {
+{
     path: '',
     component: Home,
     title: 'Home',
@@ -49,9 +49,7 @@ export const routes: Routes = [
     component: EmployeeDetailsComponent,
     title: 'Employee Details',
   },
-
-  //{ path: '', component: Home, title: 'Home' },
-  //{ path: 'home', component: Home, title: 'Home' },
-  { path: 'report', component: Report, title: 'Report' },
-  { path: '**', component: NotFound, title: 'Not Found' },
+  
+  {path: 'report', component: Report, title: 'Report'},
+  {path:'**', component: NotFound, title: 'Not Found'}
 ];

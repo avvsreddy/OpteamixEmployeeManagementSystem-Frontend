@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Employee } from '../../Models/employee';
 import { EmployeeService } from '../../Services/employee.service';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-employee-dashboard',
