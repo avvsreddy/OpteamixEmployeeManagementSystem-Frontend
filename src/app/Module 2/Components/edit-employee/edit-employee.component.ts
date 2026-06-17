@@ -26,6 +26,10 @@ implements OnInit {
 
   employee!: Employee;
 
+
+  formSubmitted = false;
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -53,7 +57,6 @@ implements OnInit {
   }
 
   updateEmployee(): void {
-
     this.employeeService
       .updateEmployee(
         this.employee.employeeId,
