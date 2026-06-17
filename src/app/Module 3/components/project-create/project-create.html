@@ -1,0 +1,128 @@
+<div class="container py-4" style="background:#eef4fb; min-height:100vh; display:flex; align-items:center; justify-content:center;">
+  <div class="card shadow-lg p-5" style="border: none; border-radius: 14px; max-width: 760px; width:100%; margin: 0 auto; padding: 1.75rem; background: linear-gradient(180deg, #ffffff, #f6f9ff);">
+
+    <div class="text-center mb-5">
+      <h2 class="mb-1" style="color: #34495e; font-weight: 600;">CREATE PROJECT ✎</h2>
+      <p style="color:#94a3b8; font-size:13px; margin:0;">Fill in the fields below to create a new project</p>
+    </div>
+
+    <form (ngSubmit)="createProject()" novalidate>
+
+      <div class="row g-3">
+        <div class="col-sm-2" style="flex: 0 0 30%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Project Name</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="project.projectName" name="projectName" required #projectName="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+            <div *ngIf="projectName.invalid && projectName.touched" class="text-danger mt-1">
+              Project Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="flex: 0 0 30%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Client Name</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="project.clientName" name="clientName" required #clientName="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+            <div *ngIf="clientName.invalid && clientName.touched" class="text-danger mt-1">
+              Client Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="flex: 0 0 28%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Start Date</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="project.startDate"
+              name="startDate" required #startDate="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+            <div *ngIf="startDate.invalid && startDate.touched" class="text-danger mt-1">
+              Start Date is required
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="flex: 0 0 26%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">End Date</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="project.endDate"
+              name="endDate" required #endDate="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+            <div *ngIf="endDate.invalid && endDate.touched" class="text-danger mt-1">
+              End Date is required
+            </div>
+            <div *ngIf="project.startDate && project.endDate && project.startDate > project.endDate" class="text-danger mt-1">
+              End Date must be after Start Date
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4" style="flex: 0 0 28%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Budget</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="project.budget"
+              name="budget" required #budget="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+            <div *ngIf="budget.invalid && budget.touched" class="text-danger mt-1">
+              Budget is required
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4" style="flex: 0 0 23%;">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Status</label>
+            <select
+              class="form-select"
+              [(ngModel)]="project.status"
+              name="status" required #status="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <div *ngIf="status.invalid && status.touched" class="text-danger mt-1">
+              Status is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-sm-4" style="flex: 0 0 18%;">
+          <div class="mb-4">
+            <label class="form-label" style="font-weight: 500; color: #34495e;">Assign Manager</label>
+            <select
+              class="form-select"
+              [(ngModel)]="project.managerId"
+              name="managerId" required #managerId="ngModel"
+              style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+              <option [ngValue]="null">No Manager</option>
+              <option *ngFor="let emp of employees" [ngValue]="emp.employeeId">
+                {{ emp.name }} - {{ emp.departmentName }}
+              </option>
+            </select>
+  </div>
+</div>
+
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-5">
+          <button type="submit" class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;">
+            Create Project
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

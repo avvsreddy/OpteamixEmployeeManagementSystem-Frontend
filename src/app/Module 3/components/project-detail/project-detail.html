@@ -1,0 +1,105 @@
+<div class="container py-4" style="background:#eef4fb; min-height:100vh; display:flex; align-items:center; justify-content:center;">
+
+  <div style="max-width: 760px; width:100%;">
+
+    <div class="mb-4">
+      <div class="d-flex justify-content-center align-items-center mb-4">
+        <div class="text-center">
+          <h2 class="mb-1" style="color: #34495e; font-weight: 600;">PROJECT DETAILS </h2>
+          <p style="color:#94a3b8; font-size:13px; margin:0;">Full overview of the selected project</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div class="card shadow-lg p-5 mx-auto" style="border: none; border-radius: 14px; max-width: 550px; padding: 1.75rem; background: linear-gradient(180deg, #ffffff, #f6f9ff);" *ngIf="project">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Project ID</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.projectId }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Project Name</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.projectName }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Client Name</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.clientName }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Start Date</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.startDate | date:'mediumDate' }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">End Date</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.endDate | date:'mediumDate' }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Budget</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ project.budget | currency :'INR' :'symbol' }}</p>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Status</label>
+          </div>
+          <div class="col-md-9">
+            <span class="badge" [ngClass]="{
+              'bg-success': project.status === 'Active',
+              'bg-danger':  project.status === 'Inactive',
+              'bg-info':    project.status === 'Completed'
+            }">{{ project.status }}</span>
+          </div>
+        </div>
+        <hr class="my-2">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="fw-bold" style="color: #34495e;">Project Manager</label>
+          </div>
+          <div class="col-md-9">
+            <p class="mb-0">{{ managerName }}</p>
+          </div>
+        </div>
+    <div class="text-center mt-4">
+        <div class="d-inline-flex gap-2">
+          <button class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;"
+            [routerLink]="['/projects/edit', project?.projectId]">Edit</button>
+          <button class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;"
+            [routerLink]="['/projects/dashboard']">Back</button>
+        </div>
+      </div>
+
+    <div class="alert alert-info" role="alert" *ngIf="!project && !errorMessage">Loading...</div>
+
+  </div>
+</div>
