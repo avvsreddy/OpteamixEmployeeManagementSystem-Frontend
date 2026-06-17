@@ -1,0 +1,112 @@
+<div class="container py-4" style="background:#eef4fb; min-height:100vh; display:flex; align-items:center; justify-content:center;">
+  <div class="card shadow-lg p-5" style="border: none; border-radius: 14px; max-width: 760px; width:100%; margin: 0 auto; padding: 1.75rem; background: linear-gradient(180deg, #ffffff, #f6f9ff);">
+    
+    <div class="text-center mb-5">
+      <h2 class="mb-1" style="color: #34495e; font-weight: 600;">UPDATE PROJECT DETAILS ✎</h2>
+      <p style="color:#94a3b8; font-size:13px; margin:0;">Edit the fields below and save your changes</p>
+    </div>
+
+    <form (ngSubmit)="updateProject()" class="row g-4 needs-validation" novalidate style="display: flex; flex-wrap: wrap; gap: 1rem;">
+
+    <div class="col-md-6" style="flex: 0 0 18%;">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Project ID</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="project.projectId"
+        name="projectId"
+        readonly
+        style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px;">
+    </div>
+
+    <div class="col-md-6" style="flex: 0 0 28%;">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Project Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="project.projectName"
+        name="projectName"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+    </div>
+
+    <div class="col-md-6" style="flex: 0 0 23%;">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Client Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="project.clientName"
+        name="clientName"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Start Date</label>
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="project.startDate"
+        name="startDate"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">End Date</label>
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="project.endDate"
+        name="endDate"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+    </div>
+    
+    <div class="col-md-4" style="flex: 0 0 24%">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Budget</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="project.budget"
+        name="budget"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+    </div>
+
+    <div class="col-md-4" style="flex : 0 0 23%">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Status</label>
+      <select
+        class="form-select"
+        [(ngModel)]="project.status"
+        name="status"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+
+    <div class="col-md-6" style="flex: 0 0 30%">
+      <label class="form-label" style="font-weight: 500; color: #34495e;">Assign Manager</label>
+      <select
+        class="form-select"
+        [(ngModel)]="project.managerId"
+        name="managerId"
+        style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 12px; transition: all 0.3s ease;">
+        <option [ngValue]="null">No Manager</option>
+        <option *ngFor="let emp of employees" [ngValue]="emp.employeeId">
+          {{ emp.name }} - {{ emp.departmentName }}
+        </option>
+      </select>
+    </div>
+
+
+    <div class="text-center mt-4">
+       <div class="d-inline-flex gap-2">
+      <button type="submit" class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3);">
+        Update
+      </button>
+      <button type="button" class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;"
+      [routerLink]="['/projects/dashboard']">Back</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+</div>

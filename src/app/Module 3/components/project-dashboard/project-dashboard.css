@@ -1,0 +1,10 @@
+.dashboard-container {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
