@@ -3,12 +3,14 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: 70px;
 
     background: #fff;
     z-index: 1000;
 
-    padding: 10px 30px; /* Smaller */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
     transition: transform 0.4s ease-in-out;
 }
 
@@ -18,7 +20,7 @@
 
 /* Logo */
 .logo-img {
-    height: 40px; /* Smaller */
+    height: 40px;
     width: auto;
 }
 
@@ -30,7 +32,7 @@
 .nav-link {
     color: #123a72;
     font-weight: 600;
-    font-size: 15px; /* Smaller */
+    font-size: 15px;
     transition: all 0.3s ease;
 }
 
@@ -51,7 +53,7 @@
     font-weight: 600;
 }
 
-/* Let's Talk */
+/* Register */
 .btn-talk {
     background: #123a72;
     color: white;
