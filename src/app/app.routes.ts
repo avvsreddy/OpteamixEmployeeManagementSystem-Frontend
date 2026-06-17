@@ -18,7 +18,6 @@ from './Module 2/Components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './Module 2/Components/employee-list/employee-list.component';
 
 export const routes: Routes = [
-<<<<<<< HEAD
 
   {
     path: '',
@@ -54,13 +53,7 @@ export const routes: Routes = [
     path: 'employees/details/:id',
     component: EmployeeDetailsComponent,
     title: 'Employee Details'
-  }
-
+  },
+  {path: 'report', component: Report, title: 'Report'},
+  {path:'**', component: NotFound, title: 'Not Found'}
 ];
-=======
-    {path: '', component: Home, title: 'Home'},
-    {path: 'home', component: Home, title: 'Home'},
-    {path: 'report', component: Report, title: 'Report'},
-    {path:'**', component: NotFound, title: 'Not Found'}
-];
->>>>>>> b2752c5cbe8be9bc31aa8623a46511b8b42f8305

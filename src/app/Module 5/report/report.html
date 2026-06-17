@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 min-vh-100">
 
   <h2 class="mb-4">Dashboard Reports</h2>
 
@@ -12,9 +12,11 @@
         (click)="drillDown('employees')">
 
         <h5 class="mb-2">Total Employees</h5>
+
         <span class="report-badge">
           {{ report.totalEmployees }}
         </span>
+
       </div>
     </div>
 
@@ -26,9 +28,11 @@
         (click)="drillDown('projects')">
 
         <h5 class="mb-2">Total Projects</h5>
+
         <span class="report-badge">
           {{ report.totalProjects }}
         </span>
+
       </div>
     </div>
 
@@ -40,17 +44,23 @@
         (click)="drillDown('tasks')">
 
         <h5 class="mb-2">Total Tasks</h5>
+
         <span class="report-badge">
           {{ report.totalTasks }}
         </span>
+
       </div>
     </div>
 
   </div>
 
   <!-- Employee Details -->
-  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'employees'">
+  <div
+    class="card mt-4 shadow-sm"
+    [hidden]="selectedSection !== 'employees'">
+
     <div class="card-body">
+
       <h4 class="mb-3">Employee Details</h4>
 
       <p>
@@ -59,12 +69,17 @@
           {{ report.totalEmployees }}
         </span>
       </p>
+
     </div>
   </div>
 
   <!-- Project Details -->
-  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'projects'">
+  <div
+    class="card mt-4 shadow-sm"
+    [hidden]="selectedSection !== 'projects'">
+
     <div class="card-body">
+
       <h4 class="mb-3">Project Details</h4>
 
       <p>
@@ -87,12 +102,17 @@
           {{ report.completedProjects }}
         </span>
       </p>
+
     </div>
   </div>
 
   <!-- Task Details -->
-  <div class="card mt-4 shadow-sm" [hidden]="selectedSection !== 'tasks'">
+  <div
+    class="card mt-4 shadow-sm"
+    [hidden]="selectedSection !== 'tasks'">
+
     <div class="card-body">
+
       <h4 class="mb-3">Task Details</h4>
 
       <p>
@@ -108,7 +128,14 @@
           {{ report.pendingTasks }}
         </span>
       </p>
+
     </div>
   </div>
+
+  @if (errMsg) {
+    <div class="alert alert-danger mt-3">
+      {{ errMsg }}
+    </div>
+  }
 
 </div>
