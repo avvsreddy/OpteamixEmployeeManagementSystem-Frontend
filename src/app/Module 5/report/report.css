@@ -1,84 +1,83 @@
-.dashboard-card {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  border-radius: 12px;
-}
-
-/* Employee Card */
-.employee-card:hover {
-  background-color: #14386e;
-  color: white;
-  transform: translateY(-5px);
-}
-
-/* Project Card */
-.project-card:hover {
-  background-color:  #14386e;
-  color: white;
-  transform: translateY(-5px);
-}
-
-/* Task Card */
-.task-card:hover {
-  background-color:  #14386e;
-  color: white;
-  transform: translateY(-5px);
-}
-
-/* Active (Clicked) Card */
-.active-card {
-    background-color:  #14386e;
-  color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  transform: scale(1.03);
-  border: 3px solid #121415;
-}
-
-/* Badge Styling */
-.badge {
-  width: fit-content;
-  padding: 10px 15px;
-}
+/* Dashboard Cards */
 .dashboard-card {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 12px;
   border: 1px solid #dee2e6;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* Hover Effect */
 .dashboard-card:hover {
+  background-color: #14386e;
+  color: #fff;
   transform: translateY(-5px);
 }
 
-/* Different hover colors */
-.employee-card:hover {
-  background-color: #e7f1ff;
-}
-
-.project-card:hover {
-  background-color: #e7f1ff;
-}
-
-.task-card:hover {
-  background-color: #e7f1ff;
-}
-
-/* Active card */
+/* Active Card */
 .active-card {
-  border: 2px solid #0b0d0f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #14386e;
+  color: #fff;
+  border: 2px solid #121415;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
-/* Professional badge */
+/* Badge */
 .report-badge {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 8px 16px;
   background-color: #f8f9fa;
   color: #212529;
   border: 1px solid #dee2e6;
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
+}
+
+/* Keep badge visible on dark cards */
+.dashboard-card:hover .report-badge,
+.active-card .report-badge {
+  background-color: #fff;
+  color: #14386e;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .dashboard-card {
+    min-height: 130px;
+  }
+
+  .report-badge {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .dashboard-card {
+    min-height: 110px;
+    text-align: center;
+  }
+
+  .report-badge {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 0.95rem;
+  }
 }
