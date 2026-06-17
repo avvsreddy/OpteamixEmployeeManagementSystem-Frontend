@@ -116,11 +116,13 @@
 </div>
 
 
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center mt-5">
+      <div class="text-center mt-4">
+        <div class="d-inline-flex gap-2">
           <button type="submit" class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;">
-            Create Project
+            Create 
           </button>
+              <button class="btn px-5 py-2" style="border-radius: 6px; font-weight: 500; background:linear-gradient(135deg,#475569,#334155); color:#ffffff; border:none; box-shadow: 0 4px 12px rgba(51,65,85,0.3); white-space: nowrap;"
+            [routerLink]="['/projects/dashboard']">Back</button>
         </div>
       </div>
     </form>

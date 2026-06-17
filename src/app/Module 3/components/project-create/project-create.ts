@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { EmployeeService } from '../../../Module 2/Services/employee.service';
 import { Employee } from '../../../Module 2/Models/employee';
@@ -10,7 +10,7 @@ import { CreateProjectDto } from '../../models/project.model';
 @Component({
   selector: 'app-project-create',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './project-create.html',
   styleUrl: './project-create.css'
 })
